@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqtixuktureog"]
+
+[ext_resource type="Script" path="res://scripts/tile.gd" id="1_dqjxv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33xir"]
+size = Vector2(64, 64)
+
+[node name="PlayableTile" type="Area2D"]
+script = ExtResource("1_dqjxv")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_33xir")
+
+[node name="BoardTile" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Stone" type="Sprite2D" parent="."]
+unique_name_in_owner = true

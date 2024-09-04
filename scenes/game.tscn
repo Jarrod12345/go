@@ -1,0 +1,102 @@
+[gd_scene load_steps=2 format=3 uid="uid://c04mankbgdnqd"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_jvjag"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_jvjag")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ExitButton" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -190.0
+offset_top = 31.0
+offset_right = -30.0
+offset_bottom = 67.0
+grow_horizontal = 0
+focus_mode = 0
+text = "Exit to Menu"
+
+[node name="PassButton" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -190.0
+offset_top = 92.0
+offset_right = -30.0
+offset_bottom = 128.0
+grow_horizontal = 0
+focus_mode = 0
+text = "Pass"
+
+[node name="SaveButton" type="Button" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -190.0
+offset_top = 153.0
+offset_right = -30.0
+offset_bottom = 189.0
+grow_horizontal = 0
+focus_mode = 0
+text = "Save Game"
+
+[node name="ScoreBlack" type="Label" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -57.0
+offset_right = -113.0
+offset_bottom = -34.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Black: 0"
+
+[node name="ScoreWhite" type="Label" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -24.0
+offset_right = -113.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "White: 0"
+
+[node name="FileDialog" type="FileDialog" parent="UI"]
+unique_name_in_owner = true
+title = "Save Game"
+initial_position = 1
+size = Vector2i(500, 350)
+ok_button_text = "Save"
+access = 1
+filters = PackedStringArray("*.sgf")
+
+[connection signal="pressed" from="UI/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="UI/PassButton" to="." method="_on_pass_button_pressed"]
+[connection signal="pressed" from="UI/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="canceled" from="UI/FileDialog" to="." method="_on_file_dialog_canceled"]
+[connection signal="file_selected" from="UI/FileDialog" to="." method="_on_file_dialog_file_selected"]

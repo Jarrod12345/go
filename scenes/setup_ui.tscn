@@ -1,0 +1,143 @@
+[gd_scene load_steps=4 format=3 uid="uid://57tq2qoki806"]
+
+[ext_resource type="Script" path="res://scripts/setup.gd" id="1_r725k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tk4aw"]
+font_size = 32
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_d37tr"]
+
+[node name="Setup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r725k")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -289.0
+offset_top = -206.0
+offset_right = 289.0
+offset_bottom = 206.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 2
+offset_top = 45.0
+offset_right = 578.0
+offset_bottom = 90.0
+text = "Go"
+label_settings = SubResource("LabelSettings_tk4aw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -166.0
+offset_top = -98.0
+offset_right = -58.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "New Game"
+
+[node name="BoardSize" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = -58.0
+offset_right = -71.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/BoardSize"]
+layout_mode = 2
+text = "Board Size"
+
+[node name="CheckBox9x9" type="CheckBox" parent="Panel/BoardSize"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+button_group = SubResource("ButtonGroup_d37tr")
+text = "9 x 9"
+
+[node name="CheckBox13x13" type="CheckBox" parent="Panel/BoardSize"]
+unique_name_in_owner = true
+layout_mode = 2
+button_group = SubResource("ButtonGroup_d37tr")
+text = "13 x 13"
+
+[node name="CheckBox19x19" type="CheckBox" parent="Panel/BoardSize"]
+unique_name_in_owner = true
+layout_mode = 2
+button_group = SubResource("ButtonGroup_d37tr")
+text = "19 x 19"
+
+[node name="VSeparator" type="VSeparator" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = -290.0
+offset_right = 48.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="LoadButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 404.0
+offset_top = -130.0
+offset_right = 509.0
+offset_bottom = -99.0
+grow_vertical = 0
+text = "Load Game"
+
+[node name="OpenDirButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 389.0
+offset_top = 181.0
+offset_right = 522.0
+offset_bottom = 235.0
+text = "View/Manage
+Save Files"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "Open a File"
+initial_position = 1
+size = Vector2i(500, 350)
+ok_button_text = "Open"
+file_mode = 0
+access = 1
+filters = PackedStringArray("*.sgf")
+
+[connection signal="pressed" from="Panel/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Panel/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="Panel/OpenDirButton" to="." method="_on_open_dir_button_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

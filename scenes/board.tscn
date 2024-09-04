@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdm2fu1kyw0xp"]
+
+[ext_resource type="Script" path="res://scripts/board.gd" id="1_wcttg"]
+
+[node name="Board" type="Node2D"]
+position = Vector2(32, 32)
+script = ExtResource("1_wcttg")
